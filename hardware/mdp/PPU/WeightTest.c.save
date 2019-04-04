@@ -1,0 +1,82 @@
+#include <s2pp.h>
+#include <stdint.h>
+#include "libnux/mailbox.h"
+#include "libnux/dls_v2.h"
+#include "spikes.h"
+#include "Utils.h"
+
+//Address from which the test read command is performed
+static uint32_t const signal_addr_offset = 0xff0;
+
+enum {
+	signal_wait = 0,
+	signal_run = 1,
+	signal_stop = 2,
+};
+
+//Read the weights directly from memory
+void readWeights(uint8_t *weights)
+{
+    for(uint8_t i = 0; i < 32; i++)
+    {
+        memcpy((uint8_t*)(weights + sizeof(uint8_t), (uint8_t*) (&dls_weight_base), sizeof(uint8_t) * dls_num_synapses);
+    }
+}
+
+//Read the weights using the vector processing unit
+void readWeightsFast(uint8_t *weights)
+{
+    for (uint32_t index = 0; index < dls_num_synapse_vectors; index++) 
+    {
+        register vector uint8_t w;
+        asm volatile (
+		    // Load the weights
+		    "fxvinx %[w], %[dls_weight_base], %[index]\n"
+            "fxvoutx %[w], %[weights], %[index]\n"
+		    : [w] "=&kv" (w)
+		    : [index] "r" (index),
+              [dls_weight_base] "b" (dls_weight_base),
+              [weights] "b" (weights)
+		    : /* no clobbering */);
+    }
+}
+
+//This is the main PPU program
+void start(void)
+{
+    //Emitt a spike into the state neuron 1
+    
+    //Read all weights and write them into the mailbox
+    uint8_t weights[32][32];
+    readWeights(weights);
+
+    for(uint8_t i = 0; i < 32; i++)
+    {
+        for(uint8_t j = 0; j < 32; j++)
+        {
+            libnux_mailbox_write_int(weights[i][j]);
+            weights[i][j] = 0;
+        }
+    }
+
+    /*//Read weights fast
+    readWeightsFast(weights);
+
+    for(uint8_t i = 0; i < 32; i++)
+    {
+        for(uint8_t j = 0; j < 32; j++)
+        {
+            libnux_mailbox_write_int(weights[i][j]);
+        }
+    }*/
+
+    //Endless loop to block further execution
+    uint32_t a = 0;
+    uint8_t signal = signal_wait;
+    while(1)
+    {
+        a++;
+        if (signal == signal_run)
+            break;
+    }
+}

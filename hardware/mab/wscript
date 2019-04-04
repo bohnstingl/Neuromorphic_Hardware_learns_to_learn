@@ -1,0 +1,23 @@
+def depends(dep):
+    dep('libnux')
+
+def options(opt):
+    opt.add_option('-r', '--rule', type='choice', default='Q', choices=['Q', 'ANN', 'GREEDY'], help='Set update rule')
+
+def configure(conf):
+    if conf.options.rule == 'ANN':
+        conf.define('ANN', 1)
+    elif conf.options.rule == 'GREEDY':
+        conf.define('GREEDY', 1)
+    conf.write_config_header('config.h')
+    conf.load('objcopy')
+
+def build(bld):
+    bld.env = bld.all_envs['nux']
+    
+    bld.program(
+        target = 'mab',
+        source = ['mab.c', 'Utils.c', 'libnux/libnux/random.c'],
+        use = ['nux', 'nux_inc', 'nux_runtime'],
+    )
+

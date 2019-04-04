@@ -1,0 +1,3 @@
+08.01.2018: MDP : 3k8 left for environment 10x5, 17x2
+                  Effort: 5 * (a x s x s)
+            Maze: 

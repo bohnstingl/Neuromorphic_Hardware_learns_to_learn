@@ -1,0 +1,43 @@
+#!/usr/bin/env python
+
+def depends(ctx):
+    ctx('frickel-dls')
+    ctx('pywrap')
+
+def options(opt):
+    pass
+
+def configure(conf):
+    pass
+
+def build(bld):
+    bld(
+        target = 'pydls',
+        features = 'cxx cxxshlib pypp pyembed pyext',
+        script = 'generate.py',
+        gen_defines = 'PYPLUSPLUS __STRICT_ANSI__',
+        defines = 'PYBINDINGS',
+        headers = 'pydls.h',
+        use = [
+            'frickel_dls',
+            'rw_api',
+            'uni',
+            'pywrap',
+            'pywrapstdvector',
+            'pyext',
+            'pyembed',
+            'pyublas',
+            'pylogging',
+            'pyk2635',
+        ],
+        install_path = 'lib',
+    )
+
+    bld(
+        name = 'pydls_tests',
+        tests = bld.path.ant_glob('tests/pydls_test_*.py'),
+        features = 'use pytest',
+        use = 'pydls',
+        install_path = '${PREFIX}/bin/tests',
+        pythonpath = ['.', 'tests'],
+    )

@@ -1,0 +1,55 @@
+def depends(dep):
+    dep('libnux')
+
+def options(opt):
+    pass
+
+def configure(conf):
+    pass
+
+def build(bld):
+    bld.program(
+        target = 'maze',
+        source = ['PPU.c', 'Maze.c', 'Utils.c'],
+        use = ['nux', 'nux_inc', 'nux_runtime'],
+        defines = ['MDP=0']
+    )
+
+    bld.program(
+        target = 'maze2',
+        source = ['PPU.c', 'Maze.c', 'Utils.c'],
+        use = ['nux', 'nux_inc', 'nux_runtime'],
+        defines = ['MDP=0']
+    )
+
+    bld.program(
+        target = 'mdp',
+        source = ['PPU.c', 'MDP.c', 'Utils.c'],
+        use = ['nux', 'nux_inc', 'nux_runtime'],
+        defines = ['MDP=1']
+    )
+
+    bld.program(
+        target = 'mdp2',
+        source = ['PPU.c', 'MDP.c', 'Utils.c'],
+        use = ['nux', 'nux_inc', 'nux_runtime'],
+        defines = ['MDP=1']
+    )
+
+    bld.program(
+        target = 'spike',
+        source = ['SpikeTest.c', 'Utils.c'],
+        use = ['nux', 'nux_inc', 'nux_runtime'],
+    )
+
+    bld.program(
+        target = 'weight',
+        source = ['WeightTest.c', 'Utils.c'],
+        use = ['nux', 'nux_inc', 'nux_runtime'],
+    )
+
+    bld.program(
+        target = 'rate',
+        source = ['RateTest.c', 'Utils.c'],
+        use = ['nux', 'nux_inc', 'nux_runtime'],
+    )

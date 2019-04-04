@@ -1,0 +1,15 @@
+Toplevel set to: /wang/users/s2ext_bohnstingl/cluster_home/MasterIGI/Code/src/Hardware/PPU
+Setting top to                           : /wang/users/s2ext_bohnstingl/cluster_home/MasterIGI/Code/src/Hardware/PPU 
+Setting out to                           : /wang/users/s2ext_bohnstingl/cluster_home/MasterIGI/Code/src/Hardware/PPU/build 
+
+============================ libnux/wscript ============================
+Checking for program 'powerpc-eabi-gcc'  : /wang/environment/software/jessie/gcc-nux/current/bin/powerpc-eabi-gcc 
+Checking for program 'powerpc-eabi-ld'   : /wang/environment/software/jessie/gcc-nux/current/bin/powerpc-eabi-ld 
+Checking for program 'powerpc-eabi-ar'   : /wang/environment/software/jessie/gcc-nux/current/bin/powerpc-eabi-ar 
+Checking for program 'powerpc-eabi-gcc'  : /wang/environment/software/jessie/gcc-nux/current/bin/powerpc-eabi-gcc 
+Checking for program 'powerpc-eabi-ld'   : /wang/environment/software/jessie/gcc-nux/current/bin/powerpc-eabi-ld 
+
+=============================== wscript ================================
+'configure' finished successfully (0.038s)
+Waf: Entering directory `/wang/users/s2ext_bohnstingl/cluster_home/MasterIGI/Code/src/Hardware/PPU/build'
+Waf: Leaving directory `/wang/users/s2ext_bohnstingl/cluster_home/MasterIGI/Code/src/Hardware/PPU/build'

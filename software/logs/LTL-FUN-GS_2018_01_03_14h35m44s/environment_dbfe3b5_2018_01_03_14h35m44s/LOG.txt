@@ -1,0 +1,2 @@
+2018-01-03 14:35:44,979 pypet.storageservice.HDF5StorageService INFO     I will use the hdf5 file `./LTL-Logs/LTL-FUN-GS/run-no-test/data.h5`.
+2018-01-03 14:35:45,006 pypet.environment.Environment INFO     Environment initialized.

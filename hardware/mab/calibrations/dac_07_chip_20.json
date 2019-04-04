@@ -1,0 +1,17 @@
+{
+	"cadc_ramp_bias"      : 2730,
+	"cadc_ramp_01"        : 1365,
+	"cadc_ramp_slope"     : 1350,
+	"cadc_vbias"          : 2389,
+	"syn_vddresmeas"      : 4095,
+	"syn_vstore"          : 1200,
+	"syn_vramp"           : 1300,
+	"syn_vbias"           : 1200,
+	"capmem_ioffset"      : 0,
+	"general_purpose_0"   : 0,
+	"general_purpose_1"   : 0,
+	"syn_vreset"          : 3700,
+	"syn_coroutbias"      : 573,
+	"capmem_ibuf_bias"    : 3000,
+	"capmem_iref"         : 3575
+}

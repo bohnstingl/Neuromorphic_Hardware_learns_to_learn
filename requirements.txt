@@ -1,0 +1,14 @@
+numpy
+scipy
+pyyaml
+matplotlib
+scoop
+pypet
+sphinx
+sphinxjp.themes.basicstrap
+sklearn
+jinja2
+gitpython
+scikit-learn
+flake8
+deap

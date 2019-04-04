@@ -22,6 +22,8 @@ The hardware models are included in `hardware/*`. In order to use it you need ac
 Nevertheless, you can examine the hardware specific code (e.g. meta-plasticity network)
 
 ［1］ -
+
 ［2］ [https://github.com/nest/nest-simulator](https://github.com/nest/nest-simulator)
+
 ［3］ [https://github.com/IGITUGraz/L2L](https://github.com/IGITUGraz/L2L)
 

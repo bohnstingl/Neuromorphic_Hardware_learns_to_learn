@@ -3,7 +3,7 @@ This repository contains the supportive material for the publication "Neuromorph
 
 # Software model
 ## Install
-- Install [NEST simulator ［2］][2]
+- Install [NEST simulator ［2］][https://github.com/nest/nest-simulator]
 - Install python dependencies listed in requirements.txt
 e.g.: `pip install -r requirements.txt`
 - Install [L2L ［3］][3] framework

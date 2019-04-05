@@ -409,49 +409,7 @@ class StateAction(object):
     def Run(self, initialState, plast_params, NRep, simtime, delay, readtimeout, hdf=True, train=True, epsilon=True):
         '''This funciton represents the training loop for the network'''
         
-        self.P, self.R = mdptoolbox_local.example.rand(self.nStates, self.nActions, is_sparse=False)#, rewardRange=(-0.3, -0.8))
-        
-        #         self.P = np.array([[[1., 0.], [0., 1.]],
-#                   [[1., 0.], [0., 1.]],
-#                   [[0., 1.], [0., 1.]],
-#                   [[1., 0.], [1., 0.]]])
-#             
-#         self.R = np.array([[[-1., -1.], [-1., -1.]],
-#                   [[-1., -1.], [-1., -1.]],
-#                   [[-1., 1.], [-1., -1.]],
-#                   [[-1., -1.], [1., -1.]]])
-
-#         self.R = np.array([[-1, -1, -1, -1, 0, -1],
-#                            [-1, -1, -1, 0, -1, 100],
-#                            [-1, -1, -1, 0, -1, -1],
-#                            [-1, 0, 0, -1, 0, -1],
-#                            [0, -1, -1, 0, -1, 100],
-#                            [-1, 0, -1, -1, 0, 100]])
-#         
-#         self.P = np.array([[[ 0.21977283,  0.14889403,  0.30343592,  0.32789723],
-#                         [ 1.        ,  0.        ,  0.        ,  0.        ],
-#                         [ 0.        ,  0.43718772,  0.54480359,  0.01800869],
-#                         [ 0.39766289,  0.39997167,  0.12547318,  0.07689227]],
-#                 
-#                        [[ 1.        ,  0.        ,  0.        ,  0.        ],
-#                         [ 0.32261337,  0.15483812,  0.32271303,  0.19983549],
-#                         [ 0.33816885,  0.2766999 ,  0.12960299,  0.25552826],
-#                         [ 0.41299411,  0.        ,  0.58369957,  0.00330633]],
-#                 
-#                        [[ 0.32343037,  0.15178596,  0.28733094,  0.23745272],
-#                         [ 0.36348538,  0.24483321,  0.16114188,  0.23053953],
-#                         [ 1.        ,  0.        ,  0.        ,  0.        ],
-#                         [ 0.        ,  0.        ,  1.        ,  0.        ]]])
-
-        self.P = np.array([[[1., 0.], [0., 1.]],
-                            [[1., 0.], [0., 1.]],
-                            [[0., 1.], [0., 1.]],
-                            [[1., 0.], [1., 0.]]])
-              
-        self.R = np.array([[[-1., -1.], [-1., -1.]],
-                            [[-1., -1.], [-1., -1.]],
-                            [[-1.,  1.], [-1., -1.]],
-                            [[-1., -1.], [1., -1.]]])
+        self.P, self.R = mdptoolbox_local.example.rand(self.nStates, self.nActions, is_sparse=False)
 
         if len(sys.argv) == 2:
             import h5py
@@ -470,9 +428,9 @@ class StateAction(object):
             
             import h5py
             
-            folder = "HDFs/MDP/"
+            folder = "HDF/"
 
-            rn = np.random.randint(2**32)
+            rn = np.random.randint(2**31)
 
             path = folder + "MDP_" + dt.datetime.now().strftime('%Y_%m_%d_%H-%M-%S') + str(rn) + ".hdf5"
             self.hdfFile = h5py.File(path, "w")
@@ -619,15 +577,6 @@ class StateAction(object):
         plt.plot(self.QDistance)
         plt.ylabel('Squared distance to optimal Q values')
         plt.xlabel('Pattern presentations')
-        
-        #Print Q table
-#         preferredActions = np.ones((self.nStates, 2)) * -1
-#         
-#         for stat in nest.GetStatus(self.stateActionConnection):
-#             
-#             if preferredActions[stat['source'] - 1][1] < stat['weight']:
-#                 preferredActions[stat['source'] - 1][0] = stat['target'] - self.actionNeurons[0]
-#                 preferredActions[stat['source'] - 1][1] = stat['weight']
                 
         print('Learnt Q-table')
         print(self.Q)
@@ -636,9 +585,6 @@ class StateAction(object):
         print(nest.GetStatus(self.stateActionConnection, 'weight'))
         
         print('Learned policy: ')
-#         policy = '('
-#         for state in preferredActions:
-#             policy += str(int(state[0])) + ', '
         policy = self.ComputePolicy()
         print(policy)
         
@@ -661,7 +607,6 @@ class StateAction(object):
     def ComputeFitness(self):
         
         #Compute the average over multiple runs
-        #average, _, _ = EvaluateMDP.averageCumRegret(np.array(self.accumulatedStates), np.array(self.accumulatedActions), np.array(self.accumulatedRewards), self.R, self.P, 1)
         average, _, _ = EvaluateMDP.averageCumReward(np.array(self.accumulatedStates), np.array(self.accumulatedActions), np.array(self.accumulatedRewards), self.R, self.P, 1)
 
         s = -average[-1]

@@ -90,14 +90,14 @@ class StateActionOptimizee(Optimizee):
         
         # Plasticity parameters for the case of weight dependency
         plast_params = {
-              'w_max':   500., #??     # Max weight of plastic synapses // here, it should be relatively high (why?)
+              'w_max':   500.,
               'gamma' : gamma,
               'eta' : eta,
-              'decay' : decay}          # discount factor
+              'decay' : decay}
         
         plast_params_lam = {
-              'w_max':   500., #??     # Max weight of plastic synapses // here, it should be relatively high (why?)
-              'gamma' : gamma,# discount factor
+              'w_max':   500.,
+              'gamma' : gamma,
               'lambda' : lam,
               'eta' : eta,
               'decay' : decay}

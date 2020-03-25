@@ -4,7 +4,6 @@ import os
 from pypet import Environment
 from pypet import pypetconstants
 import sys
-sys.path.append('../LTL')
 
 from ltl.optimizees.functions import tools as function_tools
 from ltl.optimizees.functions.benchmarked_functions import BenchmarkedFunctions

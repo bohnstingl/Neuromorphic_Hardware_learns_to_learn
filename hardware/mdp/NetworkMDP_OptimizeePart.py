@@ -11,8 +11,6 @@ import fractional as frac
 import os
 import sys
 import pickle
-sys.path.append("../LTL")
-sys.path.append("..")
 
 from ltl.optimizees.optimizee import Optimizee
 from NetworkMDP import DLSNetwork

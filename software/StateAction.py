@@ -16,7 +16,7 @@ import time
 import datetime as dt
 import sys
 sys.path.append("..")
-sys.path.append("../Hardware")
+sys.path.append("../hardware/mdp/Evaluation")
 import EvaluateMDP
 
 class StateAction(object):

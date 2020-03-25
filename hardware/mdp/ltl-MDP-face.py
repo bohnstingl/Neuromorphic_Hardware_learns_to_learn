@@ -4,7 +4,6 @@ import os
 from pypet import Environment
 from pypet import pypetconstants
 import sys
-sys.path.append('../LTL')
 
 from ltl.optimizers.crossentropy.distribution import Gaussian
 from ltl.optimizers.face.optimizer import FACEOptimizer, FACEParameters

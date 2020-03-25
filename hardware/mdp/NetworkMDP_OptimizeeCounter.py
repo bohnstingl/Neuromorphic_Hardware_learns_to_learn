@@ -12,8 +12,6 @@ import os
 import sys
 import pickle
 import subprocess
-sys.path.append("../LTL")
-sys.path.append("..")
 
 from ltl.optimizees.optimizee import Optimizee
 from NetworkMDP import DLSNetwork

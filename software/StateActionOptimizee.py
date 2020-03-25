@@ -10,8 +10,6 @@ import nest.voltage_trace
 import numpy as np
 import os
 import sys
-sys.path.append("../LTL")
-sys.path.append("..")
 from ltl.optimizees.optimizee import Optimizee
 from ltl.logging_tools import configure_loggers
 from StateAction import StateAction

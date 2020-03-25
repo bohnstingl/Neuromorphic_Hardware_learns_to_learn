@@ -1,8 +1,6 @@
 import logging.config
 import os
 import sys
-sys.path.append("..")
-sys.path.append("../LTL")
 from pypet import Environment
 from pypet import pypetconstants
 

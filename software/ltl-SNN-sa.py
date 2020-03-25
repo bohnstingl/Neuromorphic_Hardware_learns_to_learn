@@ -1,8 +1,6 @@
 import logging.config
 import os
 import sys
-sys.path.append("../LTL")
-sys.path.append("..")
 from StateActionOptimizee import StateActionOptimizee
 import numpy as np
 from pypet import Environment
